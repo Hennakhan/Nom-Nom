@@ -9,7 +9,10 @@ let foodData = {type: "chinese",
         Longitude: 30},
       address: "123 Second Street Columbia TN",
       prepDate: new Date(),
-      allergens: []
+      allergens: [],
+      name:"karuna",
+      number:"111-11-1111",
+      email:"test@test.com"
     };
 
       await postFood(foodData);
