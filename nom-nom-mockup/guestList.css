@@ -1,37 +1,96 @@
-* {margin: 0; padding: 0;}
+/* * {margin: 0; padding: 0;} */
  
-div {
-  margin: 20px;
-}
+
 
 .food {
   text-align: center;
 }
  
 ul {
+  padding: 0;
   list-style-type: none;
-  width: 500px;
+  /* width: 500px; */
 }
- 
-h3 {
-  font-family: Georgia, "Times New Roman", Times, serif;
-}
- 
-li img {
-  float: left;
-  margin: 0 15px 0 0;
-}
- 
-li p {
-  font-family: Georgia, "Times New Roman", Times, serif;
-}
- 
-li {
+
+.item1 { grid-area: image; }
+.item2 { grid-area: contactinfo; }
+.item3 { grid-area: claim; }
+
+.grid-container {
+  display: grid;
+  grid-template-areas:
+    'image contactinfo claim';
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 10px;
+  background-color: #2196F3;
   padding: 10px;
-  overflow: auto;
 }
+
+.grid-container > .item1 {
+  background-color: rgba(255, 255, 255, 0.8);
+  text-align: center;
+  /* padding: 20px 0; */
+  font-size: auto;
+  vertical-align: middle;
+}
+
+.grid-container > .item2 {
+  background-color: rgba(255, 255, 255, 0.8);
+  text-align: center;
+  /* padding: 20px 0;  */
+  vertical-align: middle;
+  padding: 20px;
+  font-size: auto;
+}
+
+.grid-container > .item3 {
+  background-color: rgba(255, 255, 255, 0.8);
+  text-align: center;
+  vertical-align: middle;
+  padding: 20px;
+  font-size: auto;
+}
+
+
  
-li:hover {
-  background: #eee;
-  cursor: pointer;
+ 
+/* li img { */
+  /* float: left; */
+  /* margin: 0 15px 0 0; */
+/* } */
+ 
+/* li p { */
+  /* font-family: Georgia, "Times New Roman", Times, serif; */
+/* } */
+ 
+/* li { */
+  /* padding: 10px; */
+  /* overflow: auto;  */
+/* } */
+ 
+/* li:hover { */
+  /* background: #eee; */
+  /* cursor: pointer; */
+/* } */
+
+
+
+.nom-button {
+  display: inline-block;
+  font-size: 25px;
+  font-weight: bold;
+  width: 125px;
+  border-radius: 10px;
+  color: #FFF;
+  font-family: Arial, sans-serif;
+  border: 0px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  text-decoration: none;
+  background-color: #fc5f20;
 }
+
+/* ul#menu li { */
+  /* display:inline; */
+  /* margin: 100px 100px 10px; */
+/* } */
