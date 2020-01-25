@@ -10,7 +10,7 @@ type AllergenProps = {
 }
 
 const Allergens = ({ allergens }: AllergenProps) =>  {
-    const allergensList = allergens.map((allergenString) => <li>{allergenString}</li>);
+    const allergensList = allergens.map((allergenString, index) => <li key={index}>{allergenString}</li>);
     return <ul>{allergensList}</ul>;
 }
 
