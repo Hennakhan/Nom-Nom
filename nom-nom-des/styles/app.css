@@ -1,13 +1,15 @@
 @import url('app.el.css');
 
 :root {
-  --orange: #FC5F20;
   --blue: #2153C9;
-  --light-blue: #618AD2;
+  --grey: #868B97;
+  --orange: #FC5F20;
   --purple: #421867;
-  --light-grey: #E4E9EF;
-  --dark-grey: #4A505D;
   --white: #FFFFFF;
+
+  --dark-grey: #4A505D;
+  --light-blue: #93AAE4;
+  --light-grey: #E4E9EF;
 }
 
 * {
@@ -108,7 +110,9 @@ main > section {
   height: 100%;
   margin: 40px;
   align-self: center;
+  flex-flow: column nowrap;
 }
+
 
 main > section.home aside h2 {
   color: var(--white);
@@ -133,20 +137,20 @@ main > section.home aside *.input {
 }
 
 main > section.find {
+  min-width: 600px;
   margin-bottom: 0px;
-  padding: 40px;
   background-color: var(--white);
   border-radius: 24px 24px 0px 0px;
 }
 
-main > footer {
-  padding: 20px;
-  color: var(--white);
-  background-color: var(--blue);
+main > section.find > *:not(hr) {
+  padding: 40px
 }
 
-main > footer > * {
-  opacity: 0.50;
+main > footer {
+  padding: 20px;
+  color: var(--light-blue);
+  background-color: var(--blue);
 }
 
 main > footer p {
