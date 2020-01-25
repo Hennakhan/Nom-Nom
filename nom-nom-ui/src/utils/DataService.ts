@@ -63,12 +63,12 @@ async function postUser(userObj: User) {
 
     //var userData = userObj as User; 
 
-    db.collection("user").doc().set({userObj}).then(function() {
+    db.collection("user").doc().set(userObj).then(function() {
         console.log("Document successfully written!");});
 }
 
 async function postFood(foodObj: Food) {
-    db.collection("food").doc().set({foodObj}).then(function() {
+    db.collection("food").doc().set(foodObj).then(function() {
         console.log("Document successfully written!");});
 }
 
