@@ -2,6 +2,7 @@
 <html>
 <head>
   <link rel="stylesheet" type="text/css" href="guestlist.css">
+  <script type="text/javascript" src="guest.js"></script>
 </head>
 <body>
   <div class = "food">
@@ -12,7 +13,7 @@
 
     <h1 class = "nom-button"> Guest </h1>
 
-    <div class="grid-container">
+    <div class="grid-container" id="gridcont">
       <div class="item1"> <img src = ""> </div>
       <div class="item2">
         <ul style="list-style-type: none; padding-inline-start: 0px; margin-block-start: 0em;
@@ -29,6 +30,8 @@
       </div>  
     
     </div>
+
+    <button onclick="AddNewRecord()"> Add </button>
 
 
     <!-- <ul>
