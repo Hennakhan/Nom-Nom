@@ -1,26 +1,43 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import { getUserById, getAllFood, getAllUsers, getFoodById, postUser, postFood } from './utils/DataService';
 
-const App: React.FC = () => {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends React.Component {
+
+  async componentDidMount() {
+    const host = await getUserById('cw25NFiW1vNLtFzhmp0k');
+    console.table(host);
+    
+    const foods = await getAllFood();
+    console.table(foods);
+
+    const users = await getAllUsers();
+    console.table(users);
+
+    const foodById = await getFoodById('5kAI1oX8SJjnXVOz3x2i');
+    console.table(foodById);
+
+    let userData = {name: "Heena", number:"6154561234", email:"test@test.com"};
+    await postUser(userData);
+    
+    
+    
+    let foodData = {type: "chinese",
+      servings: "4",
+      location: {Latitude: 20,
+        Longitude: 30},
+      address: "123 Second Street Columbia TN",
+      prepDate: new Date(),
+      allergens: []
+    };
+
+      await postFood(foodData);
+
+  }
+
+  render() {
+    return <h1>Hello World</h1>;
+  }
 }
 
 export default App;
