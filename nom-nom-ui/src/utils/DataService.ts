@@ -10,6 +10,9 @@ export interface Food {
     address: string;
     prepDate: Date;
     allergens: string[];
+    name: string;
+    number: string;
+    email: string;
 }
 
 export interface User {
