@@ -1,0 +1,16 @@
+{
+  "name": "Nom Nom",
+  "description": "Leftovers, crowdsourced",
+  "icons": [
+    {
+      "src": "/images/appicon.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    }
+  ],
+  "theme_color": "#421867",
+  "background_color": "#FC5F20",
+  "start_url": "",
+  "display": "standalone",
+  "orientation": "portrait"
+}
