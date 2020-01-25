@@ -7,6 +7,7 @@ interface Food {
         Latitude: number,
         Longitude: number
     };
+    address: string;
     prepDate: Date;
     allergens: string[];
 }
@@ -58,9 +59,25 @@ async function getUserById(id: string): Promise<User>{
     return userData as User;
 }
 
+async function postUser(userObj: User) {
+
+    //var userData = userObj as User; 
+
+    db.collection("user").doc().set({userObj}).then(function() {
+        console.log("Document successfully written!");});
+}
+
+async function postFood(foodObj: Food) {
+    db.collection("food").doc().set({foodObj}).then(function() {
+        console.log("Document successfully written!");});
+}
+
+
 export {
     getUserById,
     getAllFood,
     getAllUsers,
-    getFoodById
+    getFoodById,
+    postUser,
+    postFood
 }
