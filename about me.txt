@@ -1,7 +1,4 @@
-<<<<<<< HEAD
 luis chunga
 
 change #2
-=======
 luis chunga.
->>>>>>> b60137f9c21ddaa5b2b3e2a868de3716dfbca49c
