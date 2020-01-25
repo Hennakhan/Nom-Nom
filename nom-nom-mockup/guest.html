@@ -2,17 +2,52 @@
 <html>
 <head>
   <link rel="stylesheet" type="text/css" href="guestlist.css">
+  <script type="text/javascript" src="guest.js"></script>
 </head>
 <body>
   <div class = "food">
-    <ul>
+    <div id="logo" style="text-align: center;">
+      <img style="width:100px;" src="./images/icon.png">
+  </div>
+
+
+    <h1 class = "nom-button"> Guest </h1>
+
+    <div class="grid-container" id="gridcont">
+      <div class="item1"> <img src = ""> </div>
+      <div class="item2">
+        <ul style="list-style-type: none; padding-inline-start: 0px; margin-block-start: 0em;
+        margin-block-end: 0em;">
+          <li class = "name" > Name </li> 
+          <li class = "contact" > Phone Number </li>
+          <li class = "address" > Address </li>
+        </ul>
+
+      </div>
+      <div class="item3">
+        <button class = "nom-button"> Claim </button>
+        <p id = "miles" > 0.1 mi </p>
+      </div>  
+    
+    </div>
+
+    <button onclick="AddNewRecord()"> Add </button>
+
+
+    <!-- <ul>
       <li>
-        <img src="1.jpg" height="62" width="62"/>
-        <h3>Food type (#servings)</h3>
-        <p>Contact info. Address</p>
-      </li>
+        <ul id = "menu">
+          <li id="i" > <img src="a.jpg"> </li>
+          
+          <li style="text-align:center;" id = "foodtype" > Food Type </li>
+          <li id = "address" > Address </li>
+          
+          <button> a </button>
+          
+        </ul>
+      </li> -->
         
-      <li>
+      <!-- <li>
         <img src="2.jpg" height="62" width="62"/>
         <h3>Food type (#servings)</h3>
         <p>Contact info. Address</p>
@@ -28,8 +63,8 @@
         <img src="2.jpg" height="62" width="62"/>
         <h3>Food type (#servings)</h3>
         <p>Contact info. Address</p>
-      </li>
-    </ul>
+      </li> -->
+    <!-- </ul> -->
   </div>
 </body>
 
