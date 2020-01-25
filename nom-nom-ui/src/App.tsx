@@ -1,42 +1,33 @@
 import React from 'react';
 import './App.css';
-import { getUserById, getAllFood, getAllUsers, getFoodById, postUser, postFood } from './utils/DataService';
+import { getUserById, getAllFood, getAllUsers, getFoodById, postUser, postFood, Food } from './utils/DataService';
+import { FoodComponent } from './components/FoodView';
 
-class App extends React.Component {
+type AppState = {
+  foodItem: Food | undefined;
+}
+
+class App extends React.Component<{}, AppState> {
+  // Set Initial state
+  public readonly state: AppState = {
+    foodItem: undefined
+  }
 
   async componentDidMount() {
-    const host = await getUserById('cw25NFiW1vNLtFzhmp0k');
-    console.table(host);
-    
-    const foods = await getAllFood();
-    console.table(foods);
-
-    const users = await getAllUsers();
-    console.table(users);
-
     const foodById = await getFoodById('5kAI1oX8SJjnXVOz3x2i');
     console.table(foodById);
-
-    let userData = {name: "Heena", number:"6154561234", email:"test@test.com"};
-    await postUser(userData);
-    
-    
-    
-    let foodData = {type: "chinese",
-      servings: "4",
-      location: {Latitude: 20,
-        Longitude: 30},
-      address: "123 Second Street Columbia TN",
-      prepDate: new Date(),
-      allergens: []
-    };
-
-      await postFood(foodData);
-
+    this.setState({
+      foodItem: foodById
+    });
   }
 
   render() {
-    return <h1>Hello World</h1>;
+    const foodItemElement = this.state.foodItem ? <FoodComponent food={this.state.foodItem}></FoodComponent> : 'Loading...';
+
+    return <div>
+      <h1>Food Items:</h1>
+      {foodItemElement}
+    </div>;
   }
 }
 

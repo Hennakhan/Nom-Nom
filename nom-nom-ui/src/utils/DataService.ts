@@ -1,6 +1,6 @@
 import { db } from './firebase';
 
-interface Food {
+export interface Food {
     type: string;
     servings: string;
     location: {
@@ -12,7 +12,7 @@ interface Food {
     allergens: string[];
 }
 
-interface User {
+export interface User {
     name: string;
     number: string;
     email: string;
