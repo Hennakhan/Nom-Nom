@@ -2,6 +2,8 @@ import React from 'react';
 import './App.css';
 import { getUserById, getAllFood, getAllUsers, getFoodById, postUser, postFood, Food } from './utils/DataService';
 import { FoodComponent } from './components/FoodView';
+import MapComponent from './components/MapView';
+
 
 type AppState = {
   foodItem: Food | undefined;
@@ -25,8 +27,11 @@ class App extends React.Component<{}, AppState> {
     const foodItemElement = this.state.foodItem ? <FoodComponent food={this.state.foodItem}></FoodComponent> : 'Loading...';
 
     return <div>
-      <h1>Food Items:</h1>
-      {foodItemElement}
+      {/* <h1>Food Items:</h1>
+      {foodItemElement} */}
+
+      <MapComponent></MapComponent>
+
     </div>;
   }
 }
