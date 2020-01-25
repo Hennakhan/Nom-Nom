@@ -3,6 +3,10 @@
 div {
   margin: 20px;
 }
+
+.food {
+  text-align: center;
+}
  
 ul {
   list-style-type: none;
