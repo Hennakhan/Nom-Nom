@@ -1,0 +1,37 @@
+* {margin: 0; padding: 0;}
+ 
+div {
+  margin: 20px;
+}
+
+.food {
+  text-align: center;
+}
+ 
+ul {
+  list-style-type: none;
+  width: 500px;
+}
+ 
+h3 {
+  font-family: Georgia, "Times New Roman", Times, serif;
+}
+ 
+li img {
+  float: left;
+  margin: 0 15px 0 0;
+}
+ 
+li p {
+  font-family: Georgia, "Times New Roman", Times, serif;
+}
+ 
+li {
+  padding: 10px;
+  overflow: auto;
+}
+ 
+li:hover {
+  background: #eee;
+  cursor: pointer;
+}
