@@ -17,5 +17,5 @@ firebase.analytics();
 const db = firebase.firestore();
 
 export {
-    db
+    db,
 }
