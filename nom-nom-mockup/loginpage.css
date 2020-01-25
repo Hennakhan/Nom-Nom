@@ -54,10 +54,24 @@ body {
     background-color: #fc0e2a;
   }
 
-  .cont {
-    margin-top: 200px;
+  .aspectwrapper {
+    width: 100%;
+  position: relative;
+    /* margin-top: 200px; */
+    /* position: relative; */
+    /* margin-bottom: 50%; */
   /* position: absolute;
   top: 50%;
   -ms-transform: translateY(-50%);
   transform: translateY(-50%); */
+  }
+
+  .aspectspacer {
+    width: 100%; /* let the enlarged image height push .aspectwrapper's bottom edge */
+  }
+
+  .content {
+    position: absolute;
+    top: 0; bottom: 0; right: 0; left: 0;
+    outline: thin dashed green;
   }
