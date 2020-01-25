@@ -71,14 +71,15 @@ main > header {
   color: var(--white);
 }
 
-main > header div.logo > svg {
+main > header a.logo > svg {
+  display: block;
   height: 60px;
   margin-right: 20px;
   color: var(--orange);
   border-radius: 10px;
 }
 
-main > header div.logo > h3 {
+main > header a.logo > h3 {
   font-family: 'Raleway', sans-serif;
   font-weight: 900;
 }
@@ -105,8 +106,8 @@ main > section {
   display: flex;
   max-width: 800px;
   height: 100%;
-  margin: 0px auto;
-  padding: 40px;
+  margin: 40px;
+  align-self: center;
 }
 
 main > section.home aside h2 {
@@ -122,13 +123,20 @@ main > section.home form {
   margin-top: 40px;
 }
 
-main > section.home #location {
+main > section #location {
   color: var(--dark-grey);
-  background-color: var(--light-grey)
+  background-color: var(--light-grey);
 }
 
-main > section.home aside input {
+main > section.home aside *.input {
   border-color: var(--white);
+}
+
+main > section.find {
+  margin-bottom: 0px;
+  padding: 40px;
+  background-color: var(--white);
+  border-radius: 24px 24px 0px 0px;
 }
 
 main > footer {
