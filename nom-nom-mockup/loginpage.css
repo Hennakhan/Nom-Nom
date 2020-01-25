@@ -21,38 +21,7 @@ body {
     height: 100px;
   }
   
-  .nom-button {
-    display: inline-block;
-    font-size: 25px;
-    font-weight: bold;
-    width: 125px;
-    border-radius: 10px;
-    color: #FFF;
-    font-family: Arial, sans-serif;
-    border: 0px;
-    padding-top: 5px;
-    padding-bottom: 5px;
-    text-decoration: none;
-  }
-  .nom-button-orange {
-    background-color: #fc5f20;
-  }
-
-  .nom-button-blue {
-    background-color: #1681fb;
-  }
-  .nom-button-green {
-    background-color: #28bf25;
-  }
-  .nom-button-gray {
-    background-color: #a6a6a6;
-  }
-  .nom-button-yellow {
-    background-color: #ecb229;
-  }
-  .nom-button-red {
-    background-color: #fc0e2a;
-  }
+  
 
   .cont {
     margin-top: 200px;
