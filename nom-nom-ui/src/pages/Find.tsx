@@ -1,11 +1,21 @@
 import React from 'react';
+import { ListFoodComponent } from '../components/ListFoodComponent';
+import { Food, getAllFood } from '../utils/DataService';
+import { MapComponent } from 'react-leaflet';
 
-type FindState = {}
+type FindState = {
+  foodList: Food[]
+}
 
 class Find extends React.Component<{}, FindState> {
- public readonly state: FindState = {};
+ public readonly state: FindState = {
+   foodList: []
+ };
 
-  async componentDidMount() {}
+  async componentDidMount() {
+    const foodList = await getAllFood();
+    this.setState({ foodList });
+  }
 
   render() {
     return (
@@ -38,7 +48,8 @@ class Find extends React.Component<{}, FindState> {
           </form>
         </aside>
         <hr />
-        <article>
+        <ListFoodComponent foodItems={this.state.foodList}></ListFoodComponent>
+        {/* <article>
           <div className="split">
             <h2>Lentil soup (3)</h2>
             <h3 className="right">0.3mi</h3>
@@ -63,7 +74,7 @@ class Find extends React.Component<{}, FindState> {
             </span>
             <button className="bottom right">Claim</button>
           </div>
-        </article>
+        </article> */}
       </section>
     )
   }
