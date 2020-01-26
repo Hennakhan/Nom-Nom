@@ -1,0 +1,54 @@
+<html>
+
+<head>
+  <link rel="stylesheet" type="text/css" href="NomNom.css">
+  <link rel="stylesheet" href="giver.css">
+  <link rel="stylesheet" href="sharedcomponents.css">
+</head>
+
+<body>
+  <div class="form-style-5">
+    <h1 style="text-align: center;"> <img src="./images/thumbnail 1.2 transparent.png"> </h1>
+    <form>
+      <fieldset>
+        <div style="text-align: center;">
+          <legend><span class="number">1</span>Contact Information </legend>
+          <input type="text" name="hostfirstName" placeholder="First Name *"><br>
+          <input type="text" name="hostlastName" placeholder="Last Name *"><br>
+          <input type="number" name="hostNumber" placeholder="Phone Number *"><br>
+          <div style="text-align: center;">
+            <legend><span class="number">2</span> Food Information</legend><br>
+            <input type="text" name="foodType" placeholder="Food Type  *"><br>
+            <!-- <input type="number" name="field4" placeholder="Number of Servings *"><br> -->
+
+            <select>
+              <option>Servings *</option>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+              <option value="6">6</option>
+              <option value="7">7</option>
+              <option value="8">8</option>
+              <option value="9">9</option>
+              <option value="10">10</option>
+            </select><br>
+            <textarea name="hostLocation" placeholder="Address *"></textarea><br>
+            <span style="color: black; font-size: 18px;">Food contains: </span><br>
+            
+            <div class="checkbox-container">
+            <input type="checkbox" name="lactose" value="Lactose"> <span style="color: black; font-size: 15px;">Dairy
+            </span><br>
+            <input type="checkbox" name="nut" value="Nuts"> <span style="color: black; font-size: 15px;">Nuts</span><br>
+            <input type="checkbox" name="gluten" value="Gluten"> <span style="color: black; font-size: 15px;">Gluten
+            </span><br></div>
+      </fieldset>
+      <fieldset>
+      </fieldset>
+      <div style="text-align: center;">
+        <input type="submit" value="Host">
+    </form>
+  </div>
+</body>
+</div>
