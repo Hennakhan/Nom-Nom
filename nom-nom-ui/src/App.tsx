@@ -6,7 +6,7 @@ import MapComponent from './components/MapView';
 import { UserComponent } from './components/UserView';
 import { isUndefined } from 'util';
 import { ListFoodComponent } from './components/ListFoodComponent';
-
+import { TestComponent } from './components/TestComponent';
 
 type AppState = {
   foodItems: Food[] | undefined;
@@ -25,8 +25,7 @@ class App extends React.Component<{}, AppState> {
 
   render() {
     return <div>
-      <h2>Food List</h2>
-      <ListFoodComponent foodItems={this.state.foodItems} />
+      <TestComponent></TestComponent>
     </div>
   }
 }
