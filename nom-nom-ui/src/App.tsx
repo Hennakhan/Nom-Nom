@@ -1,11 +1,7 @@
 import React from 'react';
 import './App.css';
-import { getUserById, getAllFood, getAllUsers, getFoodById, postUser, postFood, Food, User } from './utils/DataService';
-import { FoodComponent } from './components/FoodView';
-import MapComponent from './components/MapView';
-import { UserComponent } from './components/UserView';
-import { isUndefined } from 'util';
-import { ListFoodComponent } from './components/ListFoodComponent';
+import {  getAllFood,  Food } from './utils/DataService';
+import FoodForm from './components/FoodForm';
 
 
 type AppState = {
@@ -26,7 +22,7 @@ class App extends React.Component<{}, AppState> {
   render() {
     return <div>
       <h2>Food List</h2>
-      <ListFoodComponent foodItems={this.state.foodItems} />
+      <FoodForm></FoodForm>
     </div>
   }
 }
