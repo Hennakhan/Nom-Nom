@@ -13,7 +13,7 @@
     <link rel="icon" type="image/png" href="images/favicon.png" />
     <link rel="apple-touch-icon" href="images/appicon.png" />
     <link rel="manifest" href="images/site.webmanifest" />
-    <link href="https://fonts.googleapis.com/css?family=Lato:400,700|Raleway:900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,700|Raleway:900&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="styles/app.css" />
   </head>
   <body lang="en">
@@ -31,6 +31,52 @@
         <nav>
       </header>
       <section class="give">
+        <article>
+          <form method="" action="">
+            <h3>User Information</h3>
+            <fieldset>
+              <div class="split">
+                <input type="text" placeholder="First Name" />
+                <input type="text" placeholder="Last Name" />
+              </div>
+              <div class="split">
+                <input type="text" placeholder="Email Address" />
+                <input type="text" placeholder="Phone Number" />
+              </div>
+            </fieldset>
+            <h3>Food Information</h3>
+            <fieldset>
+              <div class="split">
+                <input type="text" placeholder="Food Type" />
+                <select>
+                  <option disabled="disabled" selected="selected">Servings</option>
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                  <option value="5">5</option>
+                </select>
+              </div>
+              <input type="text" placeholder="Email Address" />
+              <textarea rows="2" placeholder="Address"></textarea>
+              <div class="split">
+                <label>
+                  <input type="checkbox" />
+                  <span>Dairy</span>
+                </label>
+                <label>
+                  <input type="checkbox" />
+                  <span>Gluten</span>
+                </label>
+                <label>
+                  <input type="checkbox" />
+                  <span>Nuts</span>
+                </label>
+              </div>
+            </fieldset>
+            <button type="submit">Post</button>
+          </form>
+        </article>
       </section>
       <footer class="split">
         <p>&copy; Nom Nom 2020 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512">

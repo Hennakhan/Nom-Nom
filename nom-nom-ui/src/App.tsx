@@ -4,7 +4,6 @@ import { getAllFood, Food } from './utils/DataService';
 import { ListFoodComponent } from './components/ListFoodComponent';
 import FoodForm from './components/FoodForm';
 
-
 type AppState = {
   foodItems: Food[] | undefined;
 }
