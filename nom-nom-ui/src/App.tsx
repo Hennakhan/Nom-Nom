@@ -12,7 +12,7 @@ import {
 import { SiteHeader } from './components/SiteHeader';
 import { SiteFooter } from './components/SiteFooter';
 
-import { Home } from './pages/Home';
+import Home from './pages/Home';
 import Give from './pages/Give';
 import Find from './pages/Find';
 import About from './pages/About';
@@ -22,6 +22,7 @@ type AppState = {
 }
 
 class App extends React.Component<{}, AppState> {
+
   // Set Initial state
   public readonly state: AppState = {
     foodItems: undefined,
@@ -34,26 +35,24 @@ class App extends React.Component<{}, AppState> {
 
   render() {
     return (
-        <Router>
-          <SiteHeader />
-          <section className="home">
-            <Switch>
-              <Route path="/give">
-                <Give />
-              </Route>
-              <Route path="/find">
-                <Find />
-              </Route>
-              <Route path="/about">
-                <About />
-              </Route>
-              <Route path="/">
-                <Home />
-              </Route>
-            </Switch>
-          </section>
+      <Router>
+        <SiteHeader />
+          <Switch>
+            <Route path="/give">
+              <Give />
+            </Route>
+            <Route path="/find">
+              <Find />
+            </Route>
+            <Route path="/about">
+              <About />
+            </Route>
+            <Route path="/">
+              <Home />
+            </Route>
+          </Switch>
         <SiteFooter />
-        </Router>
+      </Router>
     );
   }
 }
