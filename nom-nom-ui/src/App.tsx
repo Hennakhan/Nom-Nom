@@ -1,18 +1,21 @@
 import React from 'react';
 import './styles/app.css';
-import { getUserById, getAllFood, getAllUsers, getFoodById, postUser, postFood, Food, User, deleteFoodById } from './utils/DataService';
+import { getAllFood, Food } from './utils/DataService';
+
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link
+} from 'react-router-dom';
 
 import { SiteHeader } from './components/SiteHeader';
 import { SiteFooter } from './components/SiteFooter';
 
-import { PageIndex } from './components/PageIndex';
-
-import { FoodComponent } from './components/FoodView';
-import MapComponent from './components/MapView';
-import { UserComponent } from './components/UserView';
-
-import { isUndefined } from 'util';
-import { ListFoodComponent } from './components/ListFoodComponent';
+import { Home } from './pages/Home';
+import Give from './pages/Give';
+import Find from './pages/Find';
+import About from './pages/About';
 
 type AppState = {
   foodItems: Food[] | undefined;
@@ -30,13 +33,28 @@ class App extends React.Component<{}, AppState> {
   }
 
   render() {
-    return <main>
-      <SiteHeader />
-      <section className="home">
-        <PageIndex />
-      </section>
-      <SiteFooter />
-    </main>
+    return (
+        <Router>
+          <SiteHeader />
+          <section className="home">
+            <Switch>
+              <Route path="/give">
+                <Give />
+              </Route>
+              <Route path="/find">
+                <Find />
+              </Route>
+              <Route path="/about">
+                <About />
+              </Route>
+              <Route path="/">
+                <Home />
+              </Route>
+            </Switch>
+          </section>
+        <SiteFooter />
+        </Router>
+    );
   }
 }
 

@@ -1,6 +1,6 @@
 import React from 'react';
 
-export const PageIndex = () => (
+export const Home = () => (
   <aside>
     <h2 className="h1">Leftovers, crowdsourced</h2>
     <p className="h4">Donec convallis ante eu nibh pellentesque sagittis. Sed vitae nunc venenatis, pulvinar purus et, auctor nulla. Proin ac urna et justo laoreet accumsan vitae id enim. Etiam non ipsum dui. Nunc sit amet tortor vel odio eleifend commodo vel id mi.</p>
