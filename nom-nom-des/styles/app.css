@@ -7,9 +7,10 @@
   --purple: #421867;
   --white: #FFFFFF;
 
-  --dark-grey: #4A505D;
   --light-blue: #93AAE4;
   --light-grey: #E4E9EF;
+  --light-purple: #A38FB4;
+  --dark-grey: #4A505D;
 }
 
 * {
@@ -90,6 +91,7 @@ main > header a.logo > h3 {
 main > header nav {
   padding: 8px;
   font-weight: 600;
+  color: var(--light-purple);
 }
 
 main > header nav > *:not(:first-child) {
@@ -106,7 +108,7 @@ main > header nav > a.button {
 }
 
 main > section {
-  max-width: 800px;
+  max-width: 600px;
   width: calc(100% - 80px);
   height: 100%;
   margin: 40px auto;
@@ -161,6 +163,31 @@ main > section.find div.filters button {
 
 main > section.find div.filters > * {
   margin-right: 10px;
+}
+
+main > section.find article:not(:first-of-type) {
+  padding-top: 20px;
+}
+
+main > section.find article:not(:last-child) {
+  padding-bottom: 0px;
+}
+
+main > section.find article:not(:first-of-type):before {
+  content: '';
+  display: block;
+  width: 100%;
+  height: 2px;
+  margin-bottom: 20px;
+  background-color: var(--light-grey);
+}
+
+main > section.find article *.split:not(:first-child) {
+  margin-top: 5px;
+}
+
+main > section.find article h5 {
+  margin-top: 5px;
 }
 
 main > footer {
