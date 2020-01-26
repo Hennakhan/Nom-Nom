@@ -22,7 +22,14 @@ export const NomMapComponent = ({ position, zoom = 13, food = [] }: NomMapCompon
         let pos = new LatLng(food.location.Latitude, food.location.Longitude);
         return <Marker position={pos}>
           <Popup>
+            <b>{food.type}</b>
+            <br />
             {food.name}
+            <br />
+            {food.number}
+            <br />
+            {food.address}
+            <br />
           </Popup>
         </Marker>
       })}
