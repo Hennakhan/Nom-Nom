@@ -42,7 +42,7 @@ export default class MapView extends Component<{}, State> {
         />
         <Marker position={this.state.position}>
           <Popup>
-            A pretty CSS3 popup. <br /> Easily customizable.
+            Your Location
           </Popup>
         </Marker>
 
@@ -50,7 +50,15 @@ export default class MapView extends Component<{}, State> {
           let pos = new LatLng(food.location.Latitude, food.location.Longitude);
           return <Marker position={pos}>
             <Popup>
+              <b>{food.type}</b>
+              <br/>
               {food.name}
+              <br/>
+              {food.address}
+              <br/>
+              {food.number}
+              <br/>
+              {food.email}
             </Popup>
           </Marker>
         })}

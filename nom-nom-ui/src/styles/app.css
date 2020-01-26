@@ -84,7 +84,7 @@ main > header a.logo > svg {
   border-radius: 10px;
 }
 
-main > header a.logo > h3 {
+main > header a.logo > h2 {
   font-family: 'Raleway', sans-serif;
   font-weight: 900;
 }
@@ -144,7 +144,7 @@ main > section:not(.home) {
   max-width: 600px;
   margin-bottom: 0px;
   background-color: var(--white);
-  border-radius: 24px 24px 0px 0px;
+  border-radius: 22px 22px 0px 0px;
 }
 
 main > section:not(.home) > *:not(hr) {
@@ -170,15 +170,23 @@ main > section.find div.filters > * {
   margin-right: 10px;
 }
 
-main > section.find article:not(:first-of-type) {
+main > section.find div.map {
+
+}
+
+main > section.find div.list {
+
+}
+
+main > section.find div.list > *:not(:first-of-type) {
   padding-top: 20px;
 }
 
-main > section.find article:not(:last-child) {
+main > section.find div.list > *:not(:last-child) {
   padding-bottom: 0px;
 }
 
-main > section.find article:not(:first-of-type):before {
+main > section.find div.list > *:not(:first-child):before {
   content: '';
   display: block;
   width: 100%;
@@ -187,16 +195,24 @@ main > section.find article:not(:first-of-type):before {
   background-color: var(--light-grey);
 }
 
-main > section.find article *.split:not(:first-child) {
-  margin-top: 5px;
-}
-
-main > section.find article h5 {
+main > section.find div.list > * *.split:not(:first-child),
+main > section.find div.list > * h5 {
   margin-top: 5px;
 }
 
 main > section.give form > *:not(:first-child) {
   margin-top: 20px;
+}
+
+main > section.give form > footer {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+main > section.give form > footer span.message {
+  margin-right: 20px;
+  font-weight: 700;
 }
 
 main > footer {

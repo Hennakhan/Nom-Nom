@@ -15,7 +15,7 @@ export const ListFoodComponent = ({ foodItems, userCoords }: ListFoodComponentPr
            return <FoodComponent food={food} key={index} userCoords={userCoords} />
         });
 
-        return <div>{foodItemsElements}</div>
+        return <div className="list">{foodItemsElements}</div>
     } else {
         return <p>Loading...</p>;
     }

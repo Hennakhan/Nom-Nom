@@ -68,10 +68,10 @@ class FoodForm extends React.Component<{}, FormContainerState> {
     super(props);
     this.state = {
       formControls: formControls,
-      submitted: false 
+      submitted: false
     }
   }
-        
+
 
   checkChangeHandler = (event: any) => {
     const name = event.target.name;
@@ -152,7 +152,7 @@ class FoodForm extends React.Component<{}, FormContainerState> {
     this.selectedPlace = undefined;
     this.setState({ submitted: true });
     this.setState({
-      formControls: formControls 
+      formControls: formControls
     });
   };
 
@@ -160,7 +160,7 @@ class FoodForm extends React.Component<{}, FormContainerState> {
     return (
       <section className="give">
         <article>
-          <form method="" action="">
+          <form>
             <h3>User Information</h3>
             <fieldset>
               <div className="split">
@@ -256,8 +256,10 @@ class FoodForm extends React.Component<{}, FormContainerState> {
                 </label>
               </div>
             </fieldset>
-            <h3>{ this.state.submitted ? 'Thank you for giving! 🥡😋' : 'Please supply all fields.' }</h3>
-            <button type="button" onClick={this.formSubmitHandler}>Post</button>
+            <footer>
+              <span className="message">{ this.state.submitted ? 'Thank you for giving! 🥡😋' : 'Please supply all fields.' }</span>
+              <button type="button" onClick={this.formSubmitHandler}>Post</button>
+            </footer>
           </form>
         </article>
       </section>
