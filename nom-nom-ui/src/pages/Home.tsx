@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import Autocomplete from 'react-google-autocomplete';
-import { getLocation } from '../components/MapView';
+import { getLocation } from '../utils/LocationUtils';
 import { addressFromCoords } from '../utils/GeocodeService'
 
 type HomeState = {

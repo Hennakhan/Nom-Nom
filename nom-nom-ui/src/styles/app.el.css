@@ -74,11 +74,6 @@ svg {
   vertical-align: bottom;
 }
 
-form button:last-of-type {
-  display: flex;
-  margin-left: auto;
-}
-
 fieldset {
   padding: 0px;
   border: 0px;
@@ -110,7 +105,7 @@ select {
   color: var(--grey-dark);
   background-color: var(--white);
   border: 2px solid var(--light-grey);
-  border-radius: 22px;
+  border-radius: 100em;
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
@@ -185,14 +180,14 @@ select.inline {
 
 *.input > *:first-child {
   border-left-width: 2px !important;
-  border-top-left-radius: 22px !important;
-  border-bottom-left-radius: 22px !important;
+  border-top-left-radius: 100em !important;
+  border-bottom-left-radius: 100em !important;
 }
 
 *.input > *:last-child {
   border-right-width: 2px !important;
-  border-top-right-radius: 22px !important;
-  border-bottom-right-radius: 22px !important;
+  border-top-right-radius: 100em !important;
+  border-bottom-right-radius: 100em !important;
 }
 
 *.input > svg {
@@ -219,7 +214,7 @@ button,
   white-space: nowrap;
   background-color: var(--orange);
   border: 2px solid transparent;
-  border-radius: 22px;
+  border-radius: 100em;
   flex-shrink: 0;
   cursor: pointer;
   outline: 0px;

@@ -1,8 +1,11 @@
 import React from "react"; // we need this to make JSX compile
 import { Food, deleteFoodById } from "../utils/DataService";
+import { calculateDistance } from "../utils/LocationUtils"
+import { LatLng } from "leaflet";
 
 type FoodProps = {
   food: Food;
+  distanceFromUser: number;
 };
 
 // type AllergenProps = {
@@ -26,14 +29,15 @@ const formSubmitHandler = (id: string | undefined, event: any) => {
 
 };
 
-export const FoodComponent = ({ food }: FoodProps) => {
+export const FoodComponent = ({ food, distanceFromUser }: FoodProps) => {
+
   return (
     <article>
       <div className="split">
         <h2>
           {food.type} ({food.servings})
         </h2>
-        <h3 className="right">0.5mi</h3>
+      <h3 className="right">{distanceFromUser}mi</h3>
       </div>
       <div className="split">
         <span>
