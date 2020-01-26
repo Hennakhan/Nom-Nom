@@ -11,13 +11,15 @@ type FindState = {
   foodList: Food[]
   userPosition: LatLng
   gettingUserLocation: boolean
+  mapZoom: number
 }
 
 class Find extends React.Component<{}, FindState> {
   public readonly state: FindState = {
     foodList: [],
     userPosition: new LatLng(0, 0),
-    gettingUserLocation: false
+    gettingUserLocation: false,
+    mapZoom: 13
   };
 
   async componentDidMount() {
@@ -29,6 +31,13 @@ class Find extends React.Component<{}, FindState> {
 
     const foodList = await getAllFood();
     this.setState({ foodList });
+  }
+
+  mapZoomChanged(e) {
+    let { name, value } = e.target;
+    this.setState({
+      mapZoom: value
+    });
   }
 
   placeSelected(place) {
@@ -100,18 +109,18 @@ class Find extends React.Component<{}, FindState> {
               <button type="button" className="invert">Dairy</button>
               <button type="button" className="invert">Gluten</button>
               <button type="button" className="invert disabled">Nuts</button>
-              <select className="inline right" defaultValue="10">
+              <select className="inline right" defaultValue="5" onChange={this.mapZoomChanged.bind(this)}>
                 <option disabled>Range</option>
-                <option value="5">5 Miles</option>
-                <option value="10">10 Miles</option>
-                <option value="15">15 Miles</option>
-                <option value="20">20 Miles</option>
+                <option value="13">5 Miles</option>
+                <option value="12">10 Miles</option>
+                <option value="11">15 Miles</option>
+                <option value="10">20 Miles</option>
               </select>
             </div>
           </form>
         </aside>
         <hr />
-        <NomMapComponent food={this.state.foodList} position={this.state.userPosition} zoom={13}></NomMapComponent>
+        <NomMapComponent food={this.state.foodList} position={this.state.userPosition} zoom={this.state.mapZoom}></NomMapComponent>
         <ListFoodComponent foodItems={this.state.foodList} userCoords={this.state.userPosition}></ListFoodComponent>
       </section>
     )
