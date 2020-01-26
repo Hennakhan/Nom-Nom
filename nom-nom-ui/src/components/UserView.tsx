@@ -5,7 +5,6 @@ type UserProps = {
     user: User
 }
 
-
 export const UserComponent = ({ user }: UserProps) => <div>
     <ul>
         <li>Name: {user.name}</li>
