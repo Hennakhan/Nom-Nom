@@ -1,6 +1,12 @@
 import React from 'react';
 import './styles/app.css';
 import { getUserById, getAllFood, getAllUsers, getFoodById, postUser, postFood, Food, User, deleteFoodById } from './utils/DataService';
+
+import { SiteHeader } from './components/SiteHeader';
+import { SiteFooter } from './components/SiteFooter';
+
+import { PageIndex } from './components/PageIndex';
+
 import { FoodComponent } from './components/FoodView';
 import MapComponent from './components/MapView';
 import { UserComponent } from './components/UserView';
@@ -24,9 +30,13 @@ class App extends React.Component<{}, AppState> {
   }
 
   render() {
-    return <div>
-      
-    </div>
+    return <main>
+      <SiteHeader />
+      <section className="home">
+        <PageIndex />
+      </section>
+      <SiteFooter />
+    </main>
   }
 }
 
