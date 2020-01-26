@@ -1,7 +1,21 @@
 import React from 'react';
+import './styles/app.css';
 import { getAllFood, Food } from './utils/DataService';
-import { ListFoodComponent } from './components/ListFoodComponent';
-import FoodForm from './components/FoodForm';
+
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link
+} from 'react-router-dom';
+
+import { SiteHeader } from './components/SiteHeader';
+import { SiteFooter } from './components/SiteFooter';
+
+import { Home } from './pages/Home';
+import Give from './pages/Give';
+import Find from './pages/Find';
+import About from './pages/About';
 
 type AppState = {
   foodItems: Food[] | undefined;
@@ -19,11 +33,28 @@ class App extends React.Component<{}, AppState> {
   }
 
   render() {
-    return <div>
-      <FoodForm></FoodForm>
-      <h2>Food List</h2>
-      <ListFoodComponent foodItems={this.state.foodItems} />
-    </div>
+    return (
+        <Router>
+          <SiteHeader />
+          <section className="home">
+            <Switch>
+              <Route path="/give">
+                <Give />
+              </Route>
+              <Route path="/find">
+                <Find />
+              </Route>
+              <Route path="/about">
+                <About />
+              </Route>
+              <Route path="/">
+                <Home />
+              </Route>
+            </Switch>
+          </section>
+        <SiteFooter />
+        </Router>
+    );
   }
 }
 
