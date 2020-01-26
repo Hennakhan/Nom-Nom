@@ -2,12 +2,22 @@ import React, { Component } from 'react'
 import { Map, TileLayer, Marker, Popup } from 'react-leaflet';
 import { LatLng } from 'leaflet';
 import { getAllFood, Food } from '../utils/DataService';
-import { getLocation } from '../utils/LocationUtils';
 
 type State = {
   zoom: number,
   position: LatLng,
   food: Food[]
+}
+
+export function getLocation(): Promise<Position> {
+  return new Promise((resolve, reject) => {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(resolve, reject);
+    } else {
+      console.log("Geolocation is not supported by this browser.");
+      reject("Geolocation is not supported by this browser.");
+    }
+  });
 }
 
 export default class MapView extends Component<{}, State> {
@@ -42,7 +52,7 @@ export default class MapView extends Component<{}, State> {
         />
         <Marker position={this.state.position}>
           <Popup>
-            Your Location
+            A pretty CSS3 popup. <br /> Easily customizable.
           </Popup>
         </Marker>
 
@@ -50,15 +60,7 @@ export default class MapView extends Component<{}, State> {
           let pos = new LatLng(food.location.Latitude, food.location.Longitude);
           return <Marker position={pos}>
             <Popup>
-              <b>{food.type}</b>
-              <br/>
               {food.name}
-              <br/>
-              {food.address}
-              <br/>
-              {food.number}
-              <br/>
-              {food.email}
             </Popup>
           </Marker>
         })}

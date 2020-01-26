@@ -5,7 +5,7 @@ import { LatLng } from "leaflet";
 
 type FoodProps = {
   food: Food;
-  userCoords: LatLng | undefined;
+  distanceFromUser: number;
 };
 
 // type AllergenProps = {
@@ -19,12 +19,7 @@ type FoodProps = {
 //   return <ul>{allergensList}</ul>;
 // };
 
-export const FoodComponent = ({ food, userCoords }: FoodProps) => {
-  let distanceFromUser = 'N/A';
-  if (userCoords) {
-    const distance = calculateDistance({ Latitude: userCoords?.lat, Longitude: userCoords?.lng }, food.location);
-    distanceFromUser = Math.max( Math.round(distance * 10) / 10, 2.8 ).toString();
-  }
+export const FoodComponent = ({ food, distanceFromUser }: FoodProps) => {
 
   return (
     <article>
