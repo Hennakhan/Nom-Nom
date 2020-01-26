@@ -1,5 +1,5 @@
 import React from "react"; // we need this to make JSX compile
-import { Food } from "../utils/DataService";
+import { Food, deleteFoodById } from "../utils/DataService";
 
 type FoodProps = {
   food: Food;
@@ -16,6 +16,16 @@ type FoodProps = {
 //   return <ul>{allergensList}</ul>;
 // };
 
+
+const formSubmitHandler = (id: string | undefined, event: any) => {
+    console.log(`inside delete ${id}`);
+    console.log(id);
+   id && deleteFoodById(id);
+   console.log('delete done');
+   
+
+};
+
 export const FoodComponent = ({ food }: FoodProps) => {
   return (
     <article>
@@ -30,7 +40,7 @@ export const FoodComponent = ({ food }: FoodProps) => {
           <h4>{food.number}</h4>
           <h5>{food.address}</h5>
         </span>
-        <button className="bottom right">Claim</button>
+        <button className="bottom right" onClick={(evt) => formSubmitHandler(food.id, evt)}>Claim</button>
       </div>
     </article>
   );
