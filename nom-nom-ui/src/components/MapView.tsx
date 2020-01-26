@@ -2,22 +2,12 @@ import React, { Component } from 'react'
 import { Map, TileLayer, Marker, Popup } from 'react-leaflet';
 import { LatLng } from 'leaflet';
 import { getAllFood, Food } from '../utils/DataService';
+import { getLocation } from '../utils/LocationUtils';
 
 type State = {
   zoom: number,
   position: LatLng,
   food: Food[]
-}
-
-export function getLocation(): Promise<Position> {
-  return new Promise((resolve, reject) => {
-    if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(resolve, reject);
-    } else {
-      console.log("Geolocation is not supported by this browser.");
-      reject("Geolocation is not supported by this browser.");
-    }
-  });
 }
 
 export default class MapView extends Component<{}, State> {

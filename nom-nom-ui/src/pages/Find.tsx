@@ -2,17 +2,27 @@ import React from 'react';
 import { ListFoodComponent } from '../components/ListFoodComponent';
 import { Food, getAllFood } from '../utils/DataService';
 import MapView from '../components/MapView';
+import { getLocation } from '../utils/LocationUtils';
+import { LatLng } from 'leaflet';
 
 type FindState = {
   foodList: Food[]
+  userPosition: LatLng
 }
 
 class Find extends React.Component<{}, FindState> {
  public readonly state: FindState = {
-   foodList: []
+   foodList: [],
+   userPosition: new LatLng(0, 0)
  };
 
   async componentDidMount() {
+    const userLocation = await getLocation();
+      const userPosition = new LatLng(userLocation.coords.latitude, userLocation.coords.longitude);
+      this.setState({
+        userPosition
+      });
+
     const foodList = await getAllFood();
     this.setState({ foodList });
   }
@@ -37,10 +47,10 @@ class Find extends React.Component<{}, FindState> {
               <button type="button" className="invert">Dairy</button>
               <button type="button" className="invert">Gluten</button>
               <button type="button" className="invert disabled">Nuts</button>
-              <select className="inline right">
+              <select className="inline right" defaultValue="10">
                 <option disabled>Range</option>
                 <option value="5">5 Miles</option>
-                <option value="10" selected>10 Miles</option>
+                <option value="10">10 Miles</option>
                 <option value="15">15 Miles</option>
                 <option value="20">20 Miles</option>
               </select>
@@ -49,7 +59,7 @@ class Find extends React.Component<{}, FindState> {
         </aside>
         <hr />
         <MapView></MapView>
-        <ListFoodComponent foodItems={this.state.foodList}></ListFoodComponent>
+        <ListFoodComponent foodItems={this.state.foodList} userCoords={this.state.userPosition}></ListFoodComponent>
       </section>
     )
   }
