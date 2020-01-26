@@ -16,6 +16,9 @@ const Allergens = ({ allergens }: AllergenProps) =>  {
 
 export const FoodComponent = ({ food }: FoodProps) => <div>
     <ul>
+        <li>Name: {food.name}</li>
+        <li>Email: {food.email}</li>
+        <li>Number: {food.number}</li>
         <li>Type: {food.type}</li>
         <li>Servings: {food.servings}</li>
         <li>address: {food.address}</li>
