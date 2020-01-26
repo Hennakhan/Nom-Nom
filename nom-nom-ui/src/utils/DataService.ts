@@ -1,6 +1,8 @@
 import { db } from './firebase';
+import { firestore } from 'firebase';
 
 export interface Food {
+    id: string | undefined;
     type: string;
     servings: string;
     location: {
@@ -15,6 +17,7 @@ export interface Food {
     email: string;
 }
 
+
 export interface User {
     name: string;
     number: string;
@@ -23,24 +26,29 @@ export interface User {
 
 async function getFoodById(id: string) {
   const foodSnap = await db.doc(`/food/${id}`).get();
-  const foodData = foodSnap.data();
+  const foodData = {...foodSnap.data(),
+                    id: foodSnap.id};
+  
   return foodData as Food; 
 
 }
+
 //async function getUserById(id: string) {}
 async function getAllFood(): Promise<Array<Food>> {
     var allFoodColl = db.collection('food');
     var foodList = Array<Food>();
     await allFoodColl.get().then(function (querySnapshot) {
-        querySnapshot.forEach(function (doc) {
-           // console.log(doc.id, ' => ', doc.data());
-            
-            foodList.push(doc.data() as Food);
+        querySnapshot.forEach(function (doc) {   
+            foodList.push({
+              ...doc.data(),
+              id: doc.id
+            } as Food);
         });
     });
 
     return foodList;
 }
+
 async function getAllUsers(): Promise<Array<User>> {
 
     var allUsersColl = db.collection('user');
@@ -63,9 +71,7 @@ async function getUserById(id: string): Promise<User>{
 }
 
 async function postUser(userObj: User) {
-
-    //var userData = userObj as User; 
-
+    
     db.collection("user").doc().set(userObj).then(function() {
         console.log("Document successfully written!");});
 }
@@ -75,6 +81,15 @@ async function postFood(foodObj: Food) {
         console.log("Document successfully written!");});
 }
 
+async function deleteFoodById(id: string) {
+    
+    db.collection("food").doc(`${id}`).delete().then(function() {
+        console.log("Document successfully deleted!");
+    }).catch(function(error) {
+        console.error("Error removing document: ", error);
+    });
+}
+
 
 export {
     getUserById,
@@ -82,5 +97,6 @@ export {
     getAllUsers,
     getFoodById,
     postUser,
-    postFood
+    postFood,
+    deleteFoodById
 }
