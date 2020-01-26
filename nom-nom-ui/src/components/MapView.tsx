@@ -7,7 +7,7 @@ type State = {
   position: LatLng,
 }
 
-function getLocation(): Promise<Position> {
+export function getLocation(): Promise<Position> {
   return new Promise((resolve, reject) => {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(resolve, reject);
@@ -29,7 +29,7 @@ export default class MapComponent extends Component<{}, State> {
     const userLocation = await getLocation();
     const position = new LatLng(userLocation.coords.latitude, userLocation.coords.longitude);
     this.setState({
-      position 
+      position
     });
   }
 

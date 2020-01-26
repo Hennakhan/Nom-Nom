@@ -1,13 +1,15 @@
 import { db } from './firebase';
 
+export interface Location {
+    Latitude: number,
+    Longitude: number
+}
+
 export interface Food {
     id?: string | undefined;
     type: string;
     servings: string;
-    location: {
-        Latitude: number,
-        Longitude: number
-    };
+    location: Location;
     address: string;
     prepDate: Date;
     allergens: string[];
@@ -27,8 +29,8 @@ async function getFoodById(id: string) {
   const foodSnap = await db.doc(`/food/${id}`).get();
   const foodData = {...foodSnap.data(),
                     id: foodSnap.id};
-  
-  return foodData as Food; 
+
+  return foodData as Food;
 
 }
 
@@ -37,7 +39,7 @@ async function getAllFood(): Promise<Array<Food>> {
     var allFoodColl = db.collection('food');
     var foodList = Array<Food>();
     await allFoodColl.get().then(function (querySnapshot) {
-        querySnapshot.forEach(function (doc) {   
+        querySnapshot.forEach(function (doc) {
             foodList.push({
               ...doc.data(),
               id: doc.id
@@ -55,7 +57,7 @@ async function getAllUsers(): Promise<Array<User>> {
     await allUsersColl.get().then(function (querySnapshot) {
         querySnapshot.forEach(function (doc) {
            // console.log(doc.id, ' => ', doc.data());
-            
+
            usersList.push(doc.data() as User);
         });
     });
@@ -70,7 +72,7 @@ async function getUserById(id: string): Promise<User>{
 }
 
 async function postUser(userObj: User) {
-    
+
     db.collection("user").doc().set(userObj).then(function() {
         console.log("Document successfully written!");});
 }
@@ -83,7 +85,7 @@ async function postFood(foodObj: Food) {
 }
 
 async function deleteFoodById(id: string) {
-    
+
     db.collection("food").doc(`${id}`).delete().then(function() {
         console.log("Document successfully deleted!");
     }).catch(function(error) {
