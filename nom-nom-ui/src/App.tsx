@@ -1,5 +1,4 @@
 import React from 'react';
-import './App.css';
 import { getAllFood, Food } from './utils/DataService';
 import { ListFoodComponent } from './components/ListFoodComponent';
 import FoodForm from './components/FoodForm';
