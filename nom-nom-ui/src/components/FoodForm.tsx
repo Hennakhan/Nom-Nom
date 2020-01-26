@@ -1,4 +1,5 @@
 import React from 'react';
+import { coordsFromAddress } from '../utils/GeocodeService';
 
 // Followed this guide to create form: https://medium.com/@agoiabeladeyemi/the-complete-guide-to-forms-in-react-d2ba93f32825
 
@@ -92,6 +93,7 @@ class FoodForm extends React.Component<{}, FormContainerState> {
   };
 
   formSubmitHandler = () => {
+    coordsFromAddress('1201 Wexfords Downs Ln');
     console.dir(this.state.formControls);
   }
 

@@ -1,5 +1,4 @@
 import { db } from './firebase';
-import { firestore } from 'firebase';
 
 export interface Food {
     id: string | undefined;
@@ -89,6 +88,8 @@ async function deleteFoodById(id: string) {
         console.error("Error removing document: ", error);
     });
 }
+
+
 
 
 export {
