@@ -21,22 +21,22 @@ class App extends React.Component<{}, AppState> {
 
   async componentDidMount() {
 
-    let foodData = {type: "chinese",
-      servings: "4",
-      location: {Latitude: 20,
-        Longitude: 30},
-      address: "123 Second Street Columbia TN",
-      prepDate: new Date(),
-      allergens: [],
-      name:"karuna",
-      number:"111-11-1111",
-      email:"test@test.com"
-    };
+    // let foodData = {type: "chinese",
+    //   servings: "4",
+    //   location: {Latitude: 20,
+    //     Longitude: 30},
+    //   address: "123 Second Street Columbia TN",
+    //   prepDate: new Date(),
+    //   allergens: [],
+    //   name:"karuna",
+    //   number:"111-11-1111",
+    //   email:"test@test.com"
+    // };
 
-      await postFood(foodData);
+    //   await postFood(foodData);
 
-    let userData = {name: "Heena", number:"6154561234", email:"test@test.com"};
-    await postUser(userData);
+    // let userData = {name: "Heena", number:"6154561234", email:"test@test.com"};
+    // await postUser(userData);
 
     const foodById = await getFoodById('5kAI1oX8SJjnXVOz3x2i');
     // console.table(foodById);
@@ -55,8 +55,6 @@ class App extends React.Component<{}, AppState> {
   //  const userItemElement = this.state.userItem ? <UserComponent user={this.state.userItem}></UserComponent> : 'Loading...';
 
     return <div>
-      {/* <h1>Food Items:</h1>
-      {foodItemElement} */}
 
       <MapComponent></MapComponent>
 
