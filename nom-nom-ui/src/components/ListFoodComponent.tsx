@@ -13,7 +13,7 @@ export const ListFoodComponent = ({ foodItems }: ListFoodComponentProps) => {
            return <FoodComponent food={food} key={index} />
         });
 
-        return <div>{foodItemsElements}</div>
+        return <div className="list">{foodItemsElements}</div>
     } else {
         return <p>Loading...</p>;
     }
