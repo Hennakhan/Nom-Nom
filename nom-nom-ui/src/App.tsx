@@ -25,10 +25,7 @@ class App extends React.Component<{}, AppState> {
 
   render() {
     return <div>
-      <html>
-        <body lang="en">
-        </body>
-      </html>
+      
     </div>
   }
 }
