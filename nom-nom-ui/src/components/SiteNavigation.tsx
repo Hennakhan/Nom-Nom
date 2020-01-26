@@ -1,6 +1,7 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 export const SiteNavigation = () => <nav className="global right">
-  <a>About Us</a>
-  <a href="" className="button">Give Now</a>
+  <Link to="/about">About us</Link>
+  <Link className="button" to="/give">Give Now</Link>
 </nav>
