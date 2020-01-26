@@ -49,7 +49,7 @@ body:after {
 }
 
 body:before {
-  background-image: url('images/background.jpg');
+  background-image: url('../images/background.jpg');
   background-size: cover;
   background-repeat: no-repeat;
   filter: grayscale(1) opacity(0.60);
