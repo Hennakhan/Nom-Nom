@@ -6,7 +6,7 @@ import dotEnv from 'dotenv';
 dotEnv.config();
 
 // set Google Maps Geocoding API for purposes of quota management. Its optional but recommended.
-Geocode.setApiKey('GEOCODE_KEY');
+Geocode.setApiKey('');
  
 // set response language. Defaults to english.
 Geocode.setLanguage("en");
@@ -33,7 +33,7 @@ Geocode.fromAddress("Eiffel Tower").then(
 async function coordsFromAddress(address: string) {
     const response = await Geocode.fromAddress(address);
     const { lat, lng } = response.results[0].geometry.location;
-    console.log(lat, lng);
+    return [lat, lng]; 
 }
 
 export {

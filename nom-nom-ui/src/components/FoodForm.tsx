@@ -1,5 +1,6 @@
 import React from 'react';
 import { coordsFromAddress } from '../utils/GeocodeService';
+import { Food, postFood } from '../utils/DataService';
 
 // Followed this guide to create form: https://medium.com/@agoiabeladeyemi/the-complete-guide-to-forms-in-react-d2ba93f32825
 
@@ -92,9 +93,42 @@ class FoodForm extends React.Component<{}, FormContainerState> {
     });
   };
 
-  formSubmitHandler = () => {
+  formSubmitHandler = async () => {
     coordsFromAddress('1201 Wexfords Downs Ln');
     console.dir(this.state.formControls);
+
+    // Get Allergens
+    let allergens: string[] = []; 
+    if (this.state.formControls.dairy.value) { allergens.push('dairy') };
+    if (this.state.formControls.gluten.value) { allergens.push('gluten') };
+    if (this.state.formControls.nuts.value) { allergens.push('nuts') };
+
+    
+    // Create Location
+    const coords: any = await coordsFromAddress(this.state.formControls.address.value);
+    const location = {
+      Latitude: coords[0] as number,
+      Longitude: coords[1] as number
+    }
+
+    // Create Food object
+    const submitFood: Food = {
+      type: this.state.formControls.type.value, 
+      servings: this.state.formControls.servings.value, 
+      address: this.state.formControls.address.value, 
+      prepDate: new Date(), 
+      allergens: allergens,
+      name: this.state.formControls.name.value, 
+      number: this.state.formControls.number.value, 
+      email: this.state.formControls.email.value,
+      location: location,
+    };
+
+    console.log('Submit food:');
+    console.log(submitFood);
+
+    // Send food to database
+    postFood(submitFood);
   }
 
   render() {

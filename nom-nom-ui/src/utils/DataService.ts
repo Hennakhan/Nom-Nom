@@ -1,7 +1,7 @@
 import { db } from './firebase';
 
 export interface Food {
-    id: string | undefined;
+    id?: string | undefined;
     type: string;
     servings: string;
     location: {
@@ -76,8 +76,10 @@ async function postUser(userObj: User) {
 }
 
 async function postFood(foodObj: Food) {
-    db.collection("food").doc().set(foodObj).then(function() {
-        console.log("Document successfully written!");});
+    console.log(foodObj);
+    db.collection('food').add(foodObj).then((ref) => {
+        console.log('Added food doc.');
+    });
 }
 
 async function deleteFoodById(id: string) {
