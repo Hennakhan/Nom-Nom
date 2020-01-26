@@ -31,7 +31,7 @@ select {
 
 html,
 body {
-  min-width: 440px;
+  min-width: 375px;
   margin: 0px;
   padding: 0px;
   color: var(--dark-grey);
@@ -208,4 +208,15 @@ main > footer p {
 main > footer p > svg {
   height: 16px;
   margin: 2px 0px;
+}
+
+@media screen and (max-width: 600px) {
+  main > header {
+    padding: 20px 20px 0px;
+  }
+
+  main > section {
+    width: calc(100% - 40px);
+    margin: 20px auto;
+  }
 }
