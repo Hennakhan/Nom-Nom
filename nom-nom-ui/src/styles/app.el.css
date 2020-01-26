@@ -74,8 +74,9 @@ svg {
   vertical-align: bottom;
 }
 
-form button:last-child {
-  float: right;
+form button:last-of-type {
+  display: flex;
+  margin-left: auto;
 }
 
 fieldset {
