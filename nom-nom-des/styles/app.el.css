@@ -19,6 +19,10 @@
   align-self: center;
 }
 
+*.split > *.bottom {
+  align-self: flex-end;
+}
+
 *.split > *.right {
   margin-left: auto;
 }
