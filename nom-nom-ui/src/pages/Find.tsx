@@ -1,7 +1,7 @@
 import React from 'react';
 import { ListFoodComponent } from '../components/ListFoodComponent';
 import { Food, getAllFood } from '../utils/DataService';
-import MapView from '../components/MapView';
+import { NomMapComponent } from '../components/MapView';
 import { getLocation } from '../utils/LocationUtils';
 import { LatLng } from 'leaflet';
 import { addressFromCoords } from '../utils/GeocodeService';
@@ -13,21 +13,11 @@ type FindState = {
   gettingUserLocation: boolean
 }
 
-type Coordinate = {
-  Latitude: number,
-  Longitude: number
-}
-
 class Find extends React.Component<{}, FindState> {
   public readonly state: FindState = {
     foodList: [],
     userPosition: new LatLng(0, 0),
     gettingUserLocation: false
-  };
-
-  selectedCoordinate: Coordinate = {
-    Latitude: 0,
-    Longitude: 0
   };
 
   async componentDidMount() {
@@ -42,10 +32,15 @@ class Find extends React.Component<{}, FindState> {
   }
 
   placeSelected(place) {
-    this.selectedCoordinate = {
-      Latitude: place.geometry.location.lat() as number,
-      Longitude: place.geometry.location.lng() as number
-    }
+    // Temporarily set this to something else so that the map will re-center if you have moved it but not set the state to something else
+    this.setState({
+      userPosition: new LatLng(0, 0)
+    });
+
+    this.setState({
+      gettingUserLocation: false,
+      userPosition: new LatLng(place.geometry.location.lat(), place.geometry.location.lng())
+    })
   }
 
   async setCurrentLocation() {
@@ -54,21 +49,22 @@ class Find extends React.Component<{}, FindState> {
     })
 
     const userLocation = await getLocation();
-    this.selectedCoordinate = {
-      Latitude: userLocation.coords.latitude,
-      Longitude: userLocation.coords.longitude
-    }
-
-    const address = await addressFromCoords(this.selectedCoordinate.Latitude, this.selectedCoordinate.Longitude);
+    const address = await addressFromCoords(userLocation.coords.latitude, userLocation.coords.longitude);
 
     const addressForm = document.querySelector('#autocompleteForm input') as HTMLInputElement
     if (addressForm) {
       addressForm.value = address;
     }
 
+    // Temporarily set this to something else so that the map will re-center if you have moved it but not set the state to something else
     this.setState({
-      gettingUserLocation: false
-    })
+      userPosition: new LatLng(0, 0)
+    });
+
+    this.setState({
+      gettingUserLocation: false,
+      userPosition: new LatLng(userLocation.coords.latitude, userLocation.coords.longitude)
+    });
   }
 
   render() {
@@ -115,7 +111,7 @@ class Find extends React.Component<{}, FindState> {
           </form>
         </aside>
         <hr />
-        <MapView></MapView>
+        <NomMapComponent food={this.state.foodList} position={this.state.userPosition} zoom={13}></NomMapComponent>
         <ListFoodComponent foodItems={this.state.foodList} userCoords={this.state.userPosition}></ListFoodComponent>
       </section>
     )
