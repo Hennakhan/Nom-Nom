@@ -133,6 +133,7 @@ main > section.home form {
 main > section #location {
   color: var(--dark-grey);
   background-color: var(--light-grey);
+  width: 56px;
 }
 
 main > section.home aside *.input {
@@ -153,6 +154,9 @@ main > section:not(.home) > *:not(hr) {
 main > section.find div.filters {
   margin-top: 10px;
 }
+ main > section.find .leaflet-container {
+   height: 500px;
+ }
 
 main > section.find div.filters button {
   font-family: 'Lato', sans-serif;

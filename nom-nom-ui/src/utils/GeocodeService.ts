@@ -6,7 +6,7 @@ import dotEnv from 'dotenv';
 dotEnv.config();
 
 // set Google Maps Geocoding API for purposes of quota management. Its optional but recommended.
-Geocode.setApiKey('');
+Geocode.setApiKey('AIzaSyAyu2dqRS42qIQZxSmsh_0a1on4Csxex6M');
 
 // set response language. Defaults to english.
 Geocode.setLanguage("en");
@@ -25,6 +25,14 @@ async function coordsFromAddress(address: string) {
     return [lat, lng];
 }
 
+async function addressFromCoords(lat: number, lng: number) {
+    const response = await Geocode.fromLatLng(lat, lng)
+    console.log(response);
+    const address = response.results[0].formatted_address
+    return address;
+}
+
 export {
-    coordsFromAddress
+    coordsFromAddress,
+    addressFromCoords
 }
