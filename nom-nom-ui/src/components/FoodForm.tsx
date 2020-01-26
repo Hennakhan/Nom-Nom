@@ -1,6 +1,8 @@
 import React from 'react';
 import { coordsFromAddress } from '../utils/GeocodeService';
 import { Food, postFood } from '../utils/DataService';
+import Autocomplete from 'react-google-autocomplete';
+
 
 // Followed this guide to create form: https://medium.com/@agoiabeladeyemi/the-complete-guide-to-forms-in-react-d2ba93f32825
 
@@ -24,6 +26,8 @@ type FormContainerState = {
 };
 
 class FoodForm extends React.Component<{}, FormContainerState> {
+  selectedPlace: any;
+
   constructor(props: any) {
     super(props);
     this.state = {
@@ -42,9 +46,6 @@ class FoodForm extends React.Component<{}, FormContainerState> {
         },
         nuts: {
           value: false
-        },
-        address: {
-          value: ""
         },
         prepDate: {
           value: ""
@@ -74,8 +75,6 @@ class FoodForm extends React.Component<{}, FormContainerState> {
         }
       }
     });
-
-
   };
 
   changeHandler = (event: any) => {
@@ -94,32 +93,32 @@ class FoodForm extends React.Component<{}, FormContainerState> {
   };
 
   formSubmitHandler = async () => {
-    coordsFromAddress('1201 Wexfords Downs Ln');
+    // coordsFromAddress('1201 Wexfords Downs Ln');
     console.dir(this.state.formControls);
 
     // Get Allergens
-    let allergens: string[] = []; 
+    let allergens: string[] = [];
     if (this.state.formControls.dairy.value) { allergens.push('dairy') };
     if (this.state.formControls.gluten.value) { allergens.push('gluten') };
     if (this.state.formControls.nuts.value) { allergens.push('nuts') };
 
-    
+
     // Create Location
-    const coords: any = await coordsFromAddress(this.state.formControls.address.value);
+    // const coords: any = await coordsFromAddress(this.state.formControls.address.value);
     const location = {
-      Latitude: coords[0] as number,
-      Longitude: coords[1] as number
+      Latitude: this.selectedPlace.geometry.location.lat() as number,
+      Longitude: this.selectedPlace.geometry.location.lng() as number
     }
 
     // Create Food object
     const submitFood: Food = {
-      type: this.state.formControls.type.value, 
-      servings: this.state.formControls.servings.value, 
-      address: this.state.formControls.address.value, 
-      prepDate: new Date(), 
+      type: this.state.formControls.type.value,
+      servings: this.state.formControls.servings.value,
+      address: this.selectedPlace.formatted_address,
+      prepDate: new Date(),
       allergens: allergens,
-      name: this.state.formControls.name.value, 
-      number: this.state.formControls.number.value, 
+      name: this.state.formControls.name.value,
+      number: this.state.formControls.number.value,
       email: this.state.formControls.email.value,
       location: location,
     };
@@ -181,14 +180,15 @@ class FoodForm extends React.Component<{}, FormContainerState> {
             onChange={this.checkChangeHandler}
           />
 
-          
-          {/* address */}
+
           <div>address</div>
-          <input
-            type="text"
-            name="address"
-            value={this.state.formControls.address.value}
-            onChange={this.changeHandler}
+          <Autocomplete
+              style={{width: '90%'}}
+              onPlaceSelected={(place) => {
+                this.selectedPlace = place;
+              }}
+              types={['address']}
+              componentRestrictions={{country: "us"}}
           />
 
           {/* prepDate */}
