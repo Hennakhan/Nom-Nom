@@ -138,14 +138,14 @@ main > section.home aside *.input {
   border-color: var(--white);
 }
 
-main > section.find {
+main > section:not(.home) {
   max-width: 600px;
   margin-bottom: 0px;
   background-color: var(--white);
   border-radius: 24px 24px 0px 0px;
 }
 
-main > section.find > *:not(hr) {
+main > section:not(.home) > *:not(hr) {
   padding: 40px
 }
 
@@ -188,6 +188,10 @@ main > section.find article *.split:not(:first-child) {
 
 main > section.find article h5 {
   margin-top: 5px;
+}
+
+main > section.give form > *:not(:first-child) {
+  margin-top: 20px;
 }
 
 main > footer {
