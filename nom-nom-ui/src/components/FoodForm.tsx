@@ -1,5 +1,4 @@
 import React from 'react';
-import { coordsFromAddress } from '../utils/GeocodeService';
 import { Food, postFood } from '../utils/DataService';
 import Autocomplete from 'react-google-autocomplete';
 
@@ -10,8 +9,8 @@ export interface TestFood {
   type: string;
   servings: string;
   location: {
-      Latitude: number,
-      Longitude: number
+    Latitude: number;
+    Longitude: number;
   };
   address: string;
   prepDate: Date;
@@ -23,7 +22,44 @@ export interface TestFood {
 
 type FormContainerState = {
   formControls: any;
+  submitted: boolean;
 };
+
+const formControls = {
+  type: {
+    value: ""
+  },
+  servings: {
+    value: ""
+  },
+  dairy: {
+    value: false
+  },
+  gluten: {
+    value: false
+  },
+  nuts: {
+    value: false
+  },
+  prepDate: {
+    value: ""
+  },
+  firstName: {
+    value: ""
+  },
+  lastName: {
+    value: ""
+  },
+  number: {
+    value: ""
+  },
+  address: {
+    value: ""
+  },
+  email: {
+    value: ""
+  }
+}
 
 class FoodForm extends React.Component<{}, FormContainerState> {
   selectedPlace: any;
@@ -31,37 +67,11 @@ class FoodForm extends React.Component<{}, FormContainerState> {
   constructor(props: any) {
     super(props);
     this.state = {
-      formControls: {
-        type: {
-          value: ""
-        },
-        servings: {
-          value: ""
-        },
-        dairy: {
-          value: false
-        },
-        gluten: {
-          value: false
-        },
-        nuts: {
-          value: false
-        },
-        prepDate: {
-          value: ""
-        },
-        name: {
-          value: ""
-        },
-        number: {
-          value: ""
-        },
-        email: {
-          value: ""
-        }
-      }
-    };
+      formControls: formControls,
+      submitted: false 
+    }
   }
+        
 
   checkChangeHandler = (event: any) => {
     const name = event.target.name;
@@ -90,25 +100,33 @@ class FoodForm extends React.Component<{}, FormContainerState> {
         }
       }
     });
+
+    console.log(this.state);
   };
 
   formSubmitHandler = async () => {
+    console.log("here");
     // coordsFromAddress('1201 Wexfords Downs Ln');
     console.dir(this.state.formControls);
 
     // Get Allergens
     let allergens: string[] = [];
-    if (this.state.formControls.dairy.value) { allergens.push('dairy') };
-    if (this.state.formControls.gluten.value) { allergens.push('gluten') };
-    if (this.state.formControls.nuts.value) { allergens.push('nuts') };
-
+    if (this.state.formControls.dairy.value) {
+      allergens.push("dairy");
+    }
+    if (this.state.formControls.gluten.value) {
+      allergens.push("gluten");
+    }
+    if (this.state.formControls.nuts.value) {
+      allergens.push("nuts");
+    }
 
     // Create Location
     // const coords: any = await coordsFromAddress(this.state.formControls.address.value);
     const location = {
       Latitude: this.selectedPlace.geometry.location.lat() as number,
       Longitude: this.selectedPlace.geometry.location.lng() as number
-    }
+    };
 
     // Create Food object
     const submitFood: Food = {
@@ -117,121 +135,134 @@ class FoodForm extends React.Component<{}, FormContainerState> {
       address: this.selectedPlace.formatted_address,
       prepDate: new Date(),
       allergens: allergens,
-      name: this.state.formControls.name.value,
+      name:
+        this.state.formControls.firstName.value +
+        " " +
+        this.state.formControls.lastName.value,
       number: this.state.formControls.number.value,
       email: this.state.formControls.email.value,
-      location: location,
+      location: location
     };
 
-    console.log('Submit food:');
+    console.log("Submit food:");
     console.log(submitFood);
 
     // Send food to database
     postFood(submitFood);
-  }
+    this.selectedPlace = undefined;
+    this.setState({ submitted: true });
+    this.setState({
+      formControls: formControls 
+    });
+  };
 
   render() {
     return (
-      <div>
-        <form>
-          {/* Type */}
-          <div>Type</div>
-          <input
-            type="text"
-            name="type"
-            value={this.state.formControls.type.value}
-            onChange={this.changeHandler}
-          />
+      <section className="give">
+        <article>
+          <form method="" action="">
+            <h3>User Information</h3>
+            <fieldset>
+              <div className="split">
+                <input
+                  type="text"
+                  placeholder="First Name"
+                  name="firstName"
+                  value={this.state.formControls.firstName.value}
+                  onChange={this.changeHandler}
+                />
+                <input
+                  type="text"
+                  placeholder="Last Name"
+                  name="lastName"
+                  value={this.state.formControls.lastName.value}
+                  onChange={this.changeHandler}
+                />
+              </div>
+              <div className="split">
+                <input
+                  type="text"
+                  placeholder="Email Address"
+                  name="email"
+                  value={this.state.formControls.email.value}
+                  onChange={this.changeHandler}
+                />
+                <input
+                  type="text"
+                  placeholder="Phone Number"
+                  name="number"
+                  value={this.state.formControls.number.value}
+                  onChange={this.changeHandler}
+                />
+              </div>
+            </fieldset>
+            <h3>Food Information</h3>
+            <fieldset>
+              <div className="split">
+                <input
+                  type="text"
+                  placeholder="Food Type"
+                  name="type"
+                  value={this.state.formControls.type.value}
+                  onChange={this.changeHandler}
+                />
+                <input
+                  type="number"
+                  placeholder="Servings"
+                  name="servings"
+                  value={this.state.formControls.servings.value}
+                  onChange={this.changeHandler}
+                />
+              </div>
 
+              <Autocomplete
+                onPlaceSelected={place => {
+                  this.selectedPlace = place;
+                }}
+                types={["address"]}
+                componentRestrictions={{ country: "us" }}
+              />
 
-          {/* Servings */}
-          <div>Servings</div>
-          <input
-            type="number"
-            name="servings"
-            value={this.state.formControls.servings.value}
-            onChange={this.changeHandler}
-          />
-
-          {/* dairy */}
-          <div>Contains Dairy</div>
-          <input
-            type="checkbox"
-            name="dairy"
-            value={this.state.formControls.dairy.value}
-            onChange={this.checkChangeHandler}
-          />
-
-          {/* gluten */}
-          <div>Contains Gluten</div>
-          <input
-            type="checkbox"
-            name="gluten"
-            value={this.state.formControls.gluten.value}
-            onChange={this.checkChangeHandler}
-          />
-
-          {/* nuts */}
-          <div>Contains Nuts</div>
-          <input
-            type="checkbox"
-            name="nuts"
-            value={this.state.formControls.nuts.value}
-            onChange={this.checkChangeHandler}
-          />
-
-
-          <div>address</div>
-          <Autocomplete
-              style={{width: '90%'}}
-              onPlaceSelected={(place) => {
-                this.selectedPlace = place;
-              }}
-              types={['address']}
-              componentRestrictions={{country: "us"}}
-          />
-
-          {/* prepDate */}
-          <div>prepDate</div>
-          <input
-            type="text"
-            name="prepDate"
-            value={this.state.formControls.prepDate.value}
-            onChange={this.changeHandler}
-          />
-
-          {/* name */}
-          <div>name</div>
-          <input
-            type="text"
-            name="name"
-            value={this.state.formControls.name.value}
-            onChange={this.changeHandler}
-          />
-
-          {/* number */}
-          <div>number</div>
-          <input
-            type="text"
-            name="number"
-            value={this.state.formControls.number.value}
-            onChange={this.changeHandler}
-          />
-
-          {/* email */}
-          <div>email</div>
-          <input
-            type="text"
-            name="email"
-            value={this.state.formControls.email.value}
-            onChange={this.changeHandler}
-          />
-        </form>
-        <button onClick={this.formSubmitHandler}> Submit </button>
-      </div>
+              <div className="split">
+                <label>
+                  <input
+                    type="checkbox"
+                    name="dairy"
+                    checked={this.state.formControls.dairy.value}
+                    value={this.state.formControls.dairy.value}
+                    onChange={this.checkChangeHandler}
+                  />
+                  <span>Dairy</span>
+                </label>
+                <label>
+                  <input
+                    type="checkbox"
+                    name="gluten"
+                    checked={this.state.formControls.gluten.value}
+                    value={this.state.formControls.gluten.value}
+                    onChange={this.checkChangeHandler}
+                  />
+                  <span>Gluten</span>
+                </label>
+                <label>
+                  <input
+                    type="checkbox"
+                    name="nuts"
+                    checked={this.state.formControls.nuts.value}
+                    value={this.state.formControls.nuts.value}
+                    onChange={this.checkChangeHandler}
+                  />
+                  <span>Nuts</span>
+                </label>
+              </div>
+            </fieldset>
+            <h3>{ this.state.submitted ? 'Thank you for giving! 🥡😋' : 'Please supply all fields.' }</h3>
+            <button type="button" onClick={this.formSubmitHandler}>Post</button>
+          </form>
+        </article>
+      </section>
     );
   }
 }
 
 export default FoodForm;
-

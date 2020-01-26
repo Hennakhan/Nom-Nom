@@ -1,7 +1,7 @@
 import React from 'react';
 import { ListFoodComponent } from '../components/ListFoodComponent';
 import { Food, getAllFood } from '../utils/DataService';
-import { MapComponent } from 'react-leaflet';
+import MapView from '../components/MapView';
 
 type FindState = {
   foodList: Food[]
@@ -48,33 +48,8 @@ class Find extends React.Component<{}, FindState> {
           </form>
         </aside>
         <hr />
+        <MapView></MapView>
         <ListFoodComponent foodItems={this.state.foodList}></ListFoodComponent>
-        {/* <article>
-          <div className="split">
-            <h2>Lentil soup (3)</h2>
-            <h3 className="right">0.3mi</h3>
-          </div>
-          <div className="split">
-            <span>
-              <h4>(192) 8374-650</h4>
-              <h5>169 Avenue Street, Murfreesboro TN 37128</h5>
-            </span>
-            <button className="bottom right">Claim</button>
-          </div>
-        </article>
-        <article>
-          <div className="split">
-            <h2>Pizza (2)</h2>
-            <h3 className="right">0.5mi</h3>
-          </div>
-          <div className="split">
-            <span>
-              <h4>(564) 738-391</h4>
-              <h5>961 Street Avenue, Murfreesboro TN 37128</h5>
-            </span>
-            <button className="bottom right">Claim</button>
-          </div>
-        </article> */}
       </section>
     )
   }

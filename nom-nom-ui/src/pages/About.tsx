@@ -8,7 +8,14 @@ class About extends React.Component<{}, AboutState> {
   async componentDidMount() {}
 
   render() {
-    return <p>Hello From About</p>
+    return (
+      <section className="about">
+        <article>
+          <h2>Nom Nom</h2>
+          <p>Nom Nom is aimed to connect People who would like to give away foodand those who are in need of food. Nom Nom solves two major problems &mdash; prevent food wastage and provide food for the needy.</p>
+        </article>
+      </section>
+    )
   }
 }
 
