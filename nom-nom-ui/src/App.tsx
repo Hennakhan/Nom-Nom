@@ -1,5 +1,5 @@
 import React from 'react';
-import './App.css';
+import './app.css';
 import { getUserById, getAllFood, getAllUsers, getFoodById, postUser, postFood, Food, User, deleteFoodById } from './utils/DataService';
 import { FoodComponent } from './components/FoodView';
 import MapComponent from './components/MapView';

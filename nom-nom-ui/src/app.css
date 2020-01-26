@@ -1,0 +1,210 @@
+@import url('app.el.css');
+
+:root {
+  --blue: #2153C9;
+  --grey: #868B97;
+  --orange: #FC5F20;
+  --purple: #421867;
+  --white: #FFFFFF;
+
+  --light-blue: #93AAE4;
+  --light-grey: #E4E9EF;
+  --light-purple: #A38FB4;
+  --dark-grey: #4A505D;
+}
+
+* {
+  margin: 0px;
+  line-height: 1.4em;
+  box-sizing: border-box;
+}
+
+html,
+body
+input,
+textarea,
+select {
+  font-size: 14px;
+  font-family: 'Lato', sans-serif;
+  line-height: 20px;
+}
+
+html,
+body {
+  min-width: 440px;
+  margin: 0px;
+  padding: 0px;
+  color: var(--dark-grey);
+}
+
+body:before,
+body:after {
+  content: '';
+  position: fixed;
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
+  left: 0px;
+  z-index: -1;
+}
+
+body:before {
+  background-image: url('images/background.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  filter: grayscale(1) opacity(0.60);
+}
+
+body:after {
+  background-image: linear-gradient(10deg, var(--blue) 50%, var(--purple) 50%);
+  mix-blend-mode: multiply;
+}
+
+main {
+  display: flex;
+  height: 100%;
+  flex-flow: column nowrap;
+}
+
+main > *:not(section) {
+  flex-grow: 0;
+}
+
+main > header {
+  padding: 40px 40px 0px;
+  color: var(--white);
+}
+
+main > header a.logo > svg {
+  display: block;
+  height: 60px;
+  margin-right: 20px;
+  color: var(--orange);
+  border-radius: 10px;
+}
+
+main > header a.logo > h3 {
+  font-family: 'Raleway', sans-serif;
+  font-weight: 900;
+}
+
+main > header nav {
+  padding: 8px;
+  font-weight: 600;
+  color: var(--light-purple);
+}
+
+main > header nav > *:not(:first-child) {
+  margin-left: 20px;
+}
+
+main > header nav > a:not(.button) {
+  font-size: 16px;
+}
+
+main > header nav > a.button {
+  color: var(--purple);
+  background-color: var(--white);
+}
+
+main > section {
+  max-width: 600px;
+  width: calc(100% - 80px);
+  height: 100%;
+  margin: 40px auto;
+  flex-flow: column nowrap;
+}
+
+
+main > section.home aside h2 {
+  color: var(--white);
+}
+
+main > section.home p {
+  margin-top: 20px;
+  color: var(--white);
+}
+
+main > section.home form {
+  margin-top: 40px;
+}
+
+main > section #location {
+  color: var(--dark-grey);
+  background-color: var(--light-grey);
+}
+
+main > section.home aside *.input {
+  border-color: var(--white);
+}
+
+main > section:not(.home) {
+  max-width: 600px;
+  margin-bottom: 0px;
+  background-color: var(--white);
+  border-radius: 24px 24px 0px 0px;
+}
+
+main > section:not(.home) > *:not(hr) {
+  padding: 40px
+}
+
+main > section.find div.filters {
+  margin-top: 10px;
+}
+
+main > section.find div.filters button {
+  font-family: 'Lato', sans-serif;
+  font-size: inherit;
+  font-weight: 700;
+  color: var(--dark-grey);
+  border-color: var(--light-grey);
+}
+
+main > section.find div.filters > * {
+  margin-right: 10px;
+}
+
+main > section.find article:not(:first-of-type) {
+  padding-top: 20px;
+}
+
+main > section.find article:not(:last-child) {
+  padding-bottom: 0px;
+}
+
+main > section.find article:not(:first-of-type):before {
+  content: '';
+  display: block;
+  width: 100%;
+  height: 2px;
+  margin-bottom: 20px;
+  background-color: var(--light-grey);
+}
+
+main > section.find article *.split:not(:first-child) {
+  margin-top: 5px;
+}
+
+main > section.find article h5 {
+  margin-top: 5px;
+}
+
+main > section.give form > *:not(:first-child) {
+  margin-top: 20px;
+}
+
+main > footer {
+  padding: 20px;
+  color: var(--light-blue);
+  background-color: var(--blue);
+}
+
+main > footer p {
+  font-weight: 700;
+}
+
+main > footer p > svg {
+  height: 16px;
+  margin: 2px 0px;
+}
