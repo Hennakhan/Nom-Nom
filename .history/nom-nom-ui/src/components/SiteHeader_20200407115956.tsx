@@ -9,6 +9,5 @@ export const SiteHeader = () => <header className="split">
     </svg>
     <h2 className="middle">Nom Nom</h2>
   </Link>
-  <Link className="button" to="/camera">CAMERA</Link>
   <SiteNavigation />
 </header>

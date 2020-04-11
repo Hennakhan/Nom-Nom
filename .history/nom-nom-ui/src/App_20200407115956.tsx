@@ -16,7 +16,6 @@ import Home from './pages/Home';
 import Give from './pages/Give';
 import Find from './pages/Find';
 import About from './pages/About';
-import Camera from './pages/Camera';
 
 type AppState = {
   foodItems: Food[] | undefined;
@@ -47,9 +46,6 @@ class App extends React.Component<{}, AppState> {
             </Route>
             <Route path="/about">
               <About />
-            </Route>
-            <Route path="/camera">
-              <Camera />
             </Route>
             <Route path="/">
               <Home />

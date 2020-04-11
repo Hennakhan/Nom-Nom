@@ -7,8 +7,8 @@ let appFirebaseConfig = {
     projectId: "foodfinderpersist",
     storageBucket: "foodfinderpersist.appspot.com",
     messagingSenderId: "574783027429",
-    appId: "1:574783027429:web:2b17d41c05ddb1a0bafc0c",
-    measurementId: "G-HB7QWW60ZN"
+    appId: "1:574783027429:web:1da0af0b2b32fffabafc0c",
+    measurementId: "G-QSWJ8FDN0N"
 };
 
 firebase.initializeApp(appFirebaseConfig);

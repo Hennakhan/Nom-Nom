@@ -48,11 +48,11 @@ class App extends React.Component<{}, AppState> {
             <Route path="/about">
               <About />
             </Route>
-            <Route path="/camera">
-              <Camera />
-            </Route>
             <Route path="/">
               <Home />
+            </Route>
+            <Route path="/camera">
+              <Camera />
             </Route>
           </Switch>
         <SiteFooter />
